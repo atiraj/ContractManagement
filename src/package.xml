@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>InvoiceGenerator</members>
+        <members>SOWCloner</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>SOW_CloneSOW</members>
+        <members>SOW_GenerateInvoice</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Contract_Management</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>InvoiceDates__c</members>
+        <members>Invoice__c</members>
+        <members>Resource__c</members>
+        <members>SOW__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>InvoiceDates__c</members>
+        <members>Resource__c</members>
+        <members>SOW__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>InvoiceDates__c-InvoiceDate Layout</members>
+        <members>Invoice__c-Invoice Layout</members>
+        <members>Resource__c-CM_Resource Layout</members>
+        <members>SOW__c-CM_SOW Layout</members>
+        <name>Layout</name>
+    </types>
+    <version>28.0</version>
+</Package>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>It stores the information about the resources.</description>
+    <enableActivities>true</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AUNo__c</fullName>
+        <externalId>false</externalId>
+        <label>AUNo</label>
+        <length>20</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Allocation__c</fullName>
+        <defaultValue>100</defaultValue>
+        <externalId>false</externalId>
+        <label>Percent Allocation</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_Amount__c</fullName>
+        <description>Total amount billed for the resource.</description>
+        <externalId>false</externalId>
+        <formula>(Rate__c  *  No_Of_Hours__c)*( Allocation__c /100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total amount billed for the resource.</inlineHelpText>
+        <label>Billing Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Cost_To_Company__c</fullName>
+        <description>Total cost to the company</description>
+        <externalId>false</externalId>
+        <formula>(No_Of_Hours__c  *  Internal_Rate__c)*(Allocation__c/100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Total cost to the company</inlineHelpText>
+        <label>Cost To Company</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <description>Date resource is coming out</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date resource is coming out</inlineHelpText>
+        <label>End Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Internal_Rate__c</fullName>
+        <description>Rate cost to company</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rate cost to company</inlineHelpText>
+        <label>Internal Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Margin__c</fullName>
+        <externalId>false</externalId>
+        <formula>( Billing_Amount__c - Cost_To_Company__c )   /  Billing_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Margin</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Percent</type>
+    </fields>
+    <fields>
+        <fullName>Name__c</fullName>
+        <description>Name of resource</description>
+        <externalId>false</externalId>
+        <label>Name</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_Of_Hours__c</fullName>
+        <description>No of hours resource will be billed</description>
+        <externalId>false</externalId>
+        <formula>(CASE(MOD( Start_Date__c - DATE(1985,6,24),7),0,CASE( MOD( End_Date__c - Start_Date__c ,7),1,2,2,3,3,4,4,5,5,5,6,5,1),1 ,CASE( MOD( End_Date__c - Start_Date__c ,7),1,2,2,3,3,4,4,4,5,4,6,5,1),2 , CASE( MOD( End_Date__c - Start_Date__c ,7),1,2,2,3,3,3,4,3,5,4,6,5,1),3 , CASE( MOD( End_Date__c - Start_Date__c ,7),1,2,2,2,3,2,4,3,5,4,6,5,1),4 , CASE( MOD( End_Date__c - Start_Date__c ,7),1,1,2,1,3,2,4,3,5,4,6,5,1),5 , CASE( MOD( End_Date__c - Start_Date__c ,7),1,0,2,1,3,2,4,3,5,4,6,5,0),6 , CASE( MOD( End_Date__c - Start_Date__c ,7),1,1,2,2,3,3,4,4,5,5,6,5,0), 
+999)+(FLOOR(( End_Date__c - Start_Date__c )/7)*5))*8</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>No of hours resource will be billed.</inlineHelpText>
+        <label>No Of Hours</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>On_Site__c</fullName>
+        <description>Indicates if the resource is on-site or off-site</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Indicates if the resource is on-site or off-site</inlineHelpText>
+        <label>On-Site</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Rate__c</fullName>
+        <description>Rate the resource is hired.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Rate the resource is hired.</inlineHelpText>
+        <label>Rate</label>
+        <precision>18</precision>
+        <required>true</required>
+        <scale>0</scale>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>SOWNo__c</fullName>
+        <externalId>false</externalId>
+        <label>SOW</label>
+        <referenceTo>SOW__c</referenceTo>
+        <relationshipLabel>Resources</relationshipLabel>
+        <relationshipName>Resources</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <description>Date the resource is starting</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date the resource is starting</inlineHelpText>
+        <label>Start Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <label>Resource</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>R-{0000}</displayFormat>
+        <label>Resource No</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Resources</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

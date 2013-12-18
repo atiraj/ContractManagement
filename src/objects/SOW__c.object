@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>SOW is a Contract signed with the client</description>
+    <enableActivities>false</enableActivities>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>Account_Owner__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Responsible person from company.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Responsible person from company.</inlineHelpText>
+        <label>Account Owner</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>CM_SOWs1</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Amount__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount</label>
+        <summarizedField>Invoice__c.Amount__c</summarizedField>
+        <summaryForeignKey>Invoice__c.SOWNo__c</summaryForeignKey>
+        <summaryOperation>sum</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <description>Counter party signing the contract.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Counter party signing the contract.</inlineHelpText>
+        <label>Client</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>CM_SOWs</relationshipName>
+        <required>true</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Generate_Invoice__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Invoices are generated only if this checkbox is checked.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Please check this only if you are done adding the resources.</inlineHelpText>
+        <label>Generate Invoice</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>No_Of_Resources__c</fullName>
+        <externalId>false</externalId>
+        <label>No Of Resources</label>
+        <summaryForeignKey>Resource__c.SOWNo__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Parent_SOW__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Parent SOW</label>
+        <referenceTo>SOW__c</referenceTo>
+        <relationshipName>CM_SOWs</relationshipName>
+        <required>false</required>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <type>Date</type>
+    </fields>
+    <label>SOW</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>SOW No</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>SOWs</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ReadWrite</sharingModel>
+</CustomObject>
